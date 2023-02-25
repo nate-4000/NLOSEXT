@@ -1,1 +1,20 @@
 digraph h {
+start -> 0
+0  [label = "jmp 3"]
+1  [label = "ios never output"]
+2  [label = "set i 0"]
+3  [label = "set e 10"]
+4  [label = "iov i"]
+5  [label = "inc i"]
+6  [label = "jif i < e 5"]
+7  [label = "ios ended"]
+0->2
+1->2
+2->3
+3->4
+4->5
+5->6
+6->4
+6->7
+7->8
+}

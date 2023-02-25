@@ -12,15 +12,19 @@ out.stdout("digraph h {")
 
 with open(filename, "r") as rf:
     lf = rf.readlines()
+    out.stdaout("start -> 0")
     for index, item in enumerate(lf):
-        print(str(index) + "  [label = \"" + item.replace("\n", "") + "\"]")
+        out.stdaout(str(index) + "  [label = \"" + item.replace("\n", "") + "\"]")
     for index, item in enumerate(lf):
         if item.startswith("jmp "):
-            print(str(index) + "->" + item.split(" ")[1])
-        if item.startswith("jif "):
+            out.stdaout(str(index) + "->" + str(int(item.split(" ")[1]) - 1))
+        elif item.startswith("jif "):
             line = item.split(" ")
-            print(str(index) + "->" + line[4])
-            print(str(index) + "->" + str(index + 1))
+            out.stdaout(str(index) + "->" + str(int(line[4]) - 1))
+            out.stdaout(str(index) + "->" + str(index + 1))
+        elif item.startswith("vjm"):
+            out.stdaout(str(index) + "-> \"?\"")
         else:
-            print(str(index) + "->" + str(index + 1))
+            out.stdaout(str(index) + "->" + str(index + 1))
+out.stdaout("}")
         
