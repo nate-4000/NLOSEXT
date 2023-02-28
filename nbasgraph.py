@@ -2,6 +2,8 @@
 
 import os
 import out
+out.curfile = "out.xdot"
+
 
 filename = ""
 
